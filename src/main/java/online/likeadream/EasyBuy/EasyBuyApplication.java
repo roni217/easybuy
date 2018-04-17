@@ -1,12 +1,18 @@
-package online.likeadream.EasyBuy;
+package online.likeadream.easybuy;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EasyBuyApplication {
+public class EasybuyApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EasyBuyApplication.class, args);
+		SpringApplication.run(EasybuyApplication.class, args);
+	}
+	
+	@Override
+	public void run(String... args) throws Exception {
+		
 	}
 }
