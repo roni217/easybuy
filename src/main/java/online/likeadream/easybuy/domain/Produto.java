@@ -2,13 +2,16 @@ package online.likeadream.easybuy.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity
 public class Produto implements Serializable {
 		
 		private static final long serialVersionUID = 1L;
+		
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private Integer id;
@@ -18,6 +21,18 @@ public class Produto implements Serializable {
 		public Integer getId() {
 			return id;
 		}
+		
+		public Produto() {
+			
+		}
+		
+		public Produto(String nome, Integer qtdAtual, Integer qtdIdeal) {
+			super();
+			this.nome = nome;
+			this.qtdAtual = qtdAtual;
+			this.qtdIdeal = qtdIdeal;
+		}
+		
 		public void setId(Integer id) {
 			this.id = id;
 		}
@@ -39,13 +54,7 @@ public class Produto implements Serializable {
 		public void setQtdIdeal(Integer qtdIdeal) {
 			this.qtdIdeal = qtdIdeal;
 		}
-		public Produto(Integer id, String nome, Integer qtdAtual, Integer qtdIdeal) {
-			super();
-			this.id = id;
-			this.nome = nome;
-			this.qtdAtual = qtdAtual;
-			this.qtdIdeal = qtdIdeal;
-		}
+		
 		@Override
 		public int hashCode() {
 			final int prime = 31;
@@ -69,7 +78,6 @@ public class Produto implements Serializable {
 				return false;
 			return true;
 		}
-		
 		
 		
 }
