@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -24,6 +25,7 @@ public class Item implements Serializable {
 	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date validityDate;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="product_id")
 	private Product product;
