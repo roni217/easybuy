@@ -1,6 +1,5 @@
 package com.pantrymanager.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -10,20 +9,18 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Item implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class Item {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@JsonFormat(pattern="dd/MM/yyyy")
-	private Date validityDate;
+	private Date expiryDate;
 	
 	@JsonIgnore
 	@ManyToOne
@@ -31,18 +28,15 @@ public class Item implements Serializable {
 	private Product product;
 	
 	public Item() {
-		
 	}
 	
-	public Item(Integer id, Date validityDate, Product product) {
+	public Item(Integer id, Date expiryDate, Product product) {
 		super();
 		this.id = id;
-		this.validityDate = validityDate;
+		this.expiryDate = expiryDate;
 		this.product = product;
 	}
 	
-	
-
 	public Integer getId() {
 		return id;
 	}
@@ -51,12 +45,12 @@ public class Item implements Serializable {
 		this.id = id;
 	}
 
-	public Date getValidityDate() {
-		return validityDate;
+	public Date getExpiryDate() {
+		return expiryDate;
 	}
 
-	public void setValidityDate(Date validityDate) {
-		this.validityDate = validityDate;
+	public void setExpiryDate(Date expiryDate) {
+		this.expiryDate = expiryDate;
 	}
 
 	public Product getProduct() {
@@ -91,6 +85,5 @@ public class Item implements Serializable {
 			return false;
 		return true;
 	}
-	
 	
 }

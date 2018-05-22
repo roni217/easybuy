@@ -33,18 +33,12 @@ public class PantrymanagerApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		
 		Category cat1 = new Category(null, "cereals");  
 		categoryRepository.saveAll(Arrays.asList(cat1));
 		
-		
 		Product prod1 = new Product(null, "Flour", 5, cat1);
 		
-		
-		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		
-		
 		
 		Item itm1 = new Item(null, sdf.parse("30/09/2018"), prod1 );
 		Item itm2 = new Item(null, sdf.parse("30/05/2018"), prod1 );
@@ -54,7 +48,5 @@ public class PantrymanagerApplication implements CommandLineRunner {
 		productRepository.saveAll(Arrays.asList(prod1));
 		
 		itemRepository.saveAll(Arrays.asList(itm1, itm2));
-		
-		
 	}
 }

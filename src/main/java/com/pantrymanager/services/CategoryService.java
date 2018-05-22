@@ -1,5 +1,6 @@
 package com.pantrymanager.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,8 @@ public class CategoryService {
 
 	@Autowired
 	private CategoryRepository repo;
-	
-	public Category buscar(Integer id) {
+
+	public Category find(Integer id) {
 		Optional<Category> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Category.class.getName()));
@@ -25,6 +26,20 @@ public class CategoryService {
 	public Category insert(Category obj) {
 		obj.setId(null);
 		return repo.save(obj);
-		
+
+	}
+
+	public Category update(Category obj) {
+		find(obj.getId());
+		return repo.save(obj);
+	}
+
+	public void delete(Integer id) {
+		find(id);
+		repo.deleteById(id);
+	}
+
+	public List<Category> findAll() {
+		return repo.findAll();
 	}
 }
